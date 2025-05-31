@@ -5,7 +5,6 @@ import Card from "@/components/Card";
 import { fetchWeather } from "@/lib/fetchWeather";
 import type { CardProps } from "@/types/card";
 import Header from "@/components/Header";
-import NewsFeed from "@/components/NewsFeed";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -29,9 +28,9 @@ export default function Home() {
       ) {
         throw new Error("Dados incompletos da API.");
       }
-
+      
       const forecastDay = weather.forecast.forecastday[0];
-
+      
       // Utilizando a data atual formatada no padrão brasileiro
       const hoje = new Date();
       const formattedDate = `${hoje.getDate().toString().padStart(2, "0")}/${(
@@ -78,11 +77,6 @@ export default function Home() {
       setLoading(false);
     }
   }
-  // Função para limpar os dados do cartão e voltar para a tela de notícias
-  const handleVoltar = () => {
-    setCardData(null);
-    setError("");
-  };
 
   return (
     <main className={styles.main}>
@@ -93,9 +87,20 @@ export default function Home() {
             <div className={styles.spinner}></div>
           </div>
         )}
-        {error && <div className={styles.errorMessage}>{error}</div>}{" "}
-        {cardData && <Card {...cardData} onVoltar={handleVoltar} />}
-        {!cardData && !loading && !error && <NewsFeed />}
+        {error && (
+          <div className={styles.errorMessage}>
+            {error}
+          </div>
+        )}
+        {cardData && <Card {...cardData} />}
+        {!cardData && !loading && !error && (
+          <div className={styles.welcomeContainer}>
+            <h2 className={styles.welcomeTitle}>Bem-vindo ao Clima Mundo</h2>
+            <p className={styles.welcomeText}>
+              Busque por uma cidade para ver a previsão do tempo atualizada.
+            </p>
+          </div>
+        )}
       </div>
     </main>
   );

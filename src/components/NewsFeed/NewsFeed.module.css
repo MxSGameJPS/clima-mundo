@@ -1,0 +1,274 @@
+.container {
+  background-color: #f6f8fa;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  margin: 32px auto;
+  max-width: 1400px; 
+  width: 100%;
+}
+
+.title {
+  color: #013a6e;
+  font-size: 1.8rem;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 2px solid #e1e4e8;
+  padding-bottom: 12px;
+}
+
+.titleIcon {
+  color: #0366d6;
+}
+
+.newsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 24px;
+}
+
+.newsCard {
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.newsCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.imageContainer {
+  height: 160px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.newsImage {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.newsCard:hover .newsImage {
+  transform: scale(1.05);
+}
+
+.placeholderImage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f1f2f4;
+  color: #586069;
+}
+
+.placeholderImage p {
+  font-size: 0.9rem;
+  margin-top: 8px;
+}
+
+.contentContainer {
+  padding: 16px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.newsTitle {
+  font-size: 1.1rem;
+  margin: 0 0 12px 0;
+  color: #24292e;
+  line-height: 1.4;
+}
+
+.newsSource {
+  font-size: 0.85rem;
+  color: #586069;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.newsDate {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.8rem;
+}
+
+.clockIcon {
+  font-size: 0.75rem;
+}
+
+.newsDescription {
+  color: #444d56;
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.readMore {
+  color: #0366d6;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  align-self: flex-start;
+  transition: color 0.2s;
+}
+
+.readMore:hover {
+  color: #044289;
+  text-decoration: underline;
+}
+
+.linkIcon {
+  font-size: 0.8rem;
+}
+
+.noNews {
+  text-align: center;
+  color: #586069;
+  font-style: italic;
+  padding: 40px 0;
+}
+
+.loadingContainer {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.spinner {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(3, 102, 214, 0.2);
+  border-radius: 50%;
+  border-top-color: #0366d6;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.errorMessage {
+  color: #721c24;
+  background-color: #f8d7da;
+  padding: 16px 24px;
+  border-radius: 12px;
+  margin: 20px auto;
+  text-align: center;
+  max-width: 500px;
+}
+
+.apiHelp {
+  margin-top: 16px;
+  font-size: 0.9rem;
+}
+
+.apiLink {
+  color: #0366d6;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.attribution {
+  font-size: 0.8rem;
+  color: #586069;
+  text-align: center;
+  margin-top: 24px;
+  font-style: italic;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.categoryFilter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.categoryButton {
+  background-color: #f1f2f4;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 0.9rem;
+  color: #444d56;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.categoryButton:hover {
+  background-color: #e1e4e8;
+}
+
+.categoryButton.active {
+  background-color: #0366d6;
+  color: white;
+}
+
+/* Responsividade */
+@media (max-width: 1400px) {
+  .newsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 1024px) {
+  .newsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .newsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .container {
+    padding: 16px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .categoryFilter {
+    justify-content: center;
+  }
+
+  .categoryButton {
+    font-size: 0.8rem;
+    padding: 5px 12px;
+  }
+}

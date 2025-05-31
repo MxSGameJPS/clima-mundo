@@ -5,14 +5,12 @@ import Card from "@/components/Card";
 import { fetchWeather } from "@/lib/fetchWeather";
 import type { CardProps } from "@/types/card";
 import Header from "@/components/Header";
-import NewsFeed from "@/components/NewsFeed";
 import styles from "./page.module.css";
 
 export default function Home() {
   const [cardData, setCardData] = useState<CardProps | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-
   async function handleSearch(city: string) {
     setLoading(true);
     setError("");
@@ -28,10 +26,8 @@ export default function Home() {
         !weather.forecast.forecastday[0]
       ) {
         throw new Error("Dados incompletos da API.");
-      }
-
-      const forecastDay = weather.forecast.forecastday[0];
-
+      }      const forecastDay = weather.forecast.forecastday[0];
+      
       // Utilizando a data atual formatada no padrão brasileiro
       const hoje = new Date();
       const formattedDate = `${hoje.getDate().toString().padStart(2, "0")}/${(
@@ -78,24 +74,50 @@ export default function Home() {
       setLoading(false);
     }
   }
-  // Função para limpar os dados do cartão e voltar para a tela de notícias
-  const handleVoltar = () => {
-    setCardData(null);
-    setError("");
-  };
-
   return (
-    <main className={styles.main}>
+    <main style={{ backgroundColor: "#f0f2f5", minHeight: "100vh", padding: "0 0 32px 0" }}>
       <Header onSearch={handleSearch} />
-      <div className={styles.container}>
+      <div style={{ maxWidth: "800px", margin: "0 auto", padding: "0 16px" }}>
         {loading && (
-          <div className={styles.loadingContainer}>
-            <div className={styles.spinner}></div>
+          <div style={{ textAlign: "center", padding: "20px" }}>
+            <div style={{ display: "inline-block", width: "30px", height: "30px", border: "3px solid #013a6e", borderRadius: "50%", borderTopColor: "transparent", animation: "spin 1s linear infinite" }}></div>
+            <style jsx>{`
+              @keyframes spin {
+                to { transform: rotate(360deg); }
+              }
+            `}</style>
           </div>
         )}
-        {error && <div className={styles.errorMessage}>{error}</div>}{" "}
-        {cardData && <Card {...cardData} onVoltar={handleVoltar} />}
-        {!cardData && !loading && !error && <NewsFeed />}
+        {error && (
+          <div style={{ 
+            color: "#721c24", 
+            backgroundColor: "#f8d7da", 
+            padding: "12px 20px", 
+            borderRadius: "8px",
+            margin: "20px auto",
+            maxWidth: "500px",
+            textAlign: "center",
+            boxShadow: "0 2px 4px rgba(0,0,0,0.1)"
+          }}>
+            {error}
+          </div>
+        )}
+        {cardData && <Card {...cardData} />}
+        {!cardData && !loading && !error && (
+          <div style={{ 
+            textAlign: "center", 
+            margin: "40px auto", 
+            padding: "30px", 
+            backgroundColor: "#e9ecef", 
+            borderRadius: "12px",
+            maxWidth: "500px"
+          }}>
+            <h2 style={{ color: "#013a6e", marginBottom: "16px" }}>Bem-vindo ao Clima Mundo</h2>
+            <p style={{ color: "#495057", marginBottom: "20px" }}>
+              Busque por uma cidade para ver a previsão do tempo atualizada.
+            </p>
+          </div>
+        )}
       </div>
     </main>
   );

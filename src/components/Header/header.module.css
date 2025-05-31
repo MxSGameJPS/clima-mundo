@@ -1,0 +1,169 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background: #073fda;
+  gap: 5rem;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-right: 10px;
+  position: relative;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  width: 24px;
+  background: #fff;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+.logo {
+  height: 40px;
+  margin-right: 0.5rem;
+}
+
+.logoText {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.logoTextLetra {
+  font-weight: bold;
+  font-size: 1.5rem;
+  background: linear-gradient(
+    90deg,
+    #000b70,
+    #c0d2f8
+  ); /* Exemplo de degradê amarelo para azul */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.searchBar input {
+  padding: 0.5rem;
+  width: 700px;
+  background: transparent;
+  border: 1px solid #f0f0f0;
+  border-radius: 14px;
+}
+
+.searchBar input::placeholder {
+  color: #fff;
+  opacity: 0.7;
+}
+
+.searchBar button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.menu {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  display: flex;
+  gap: 5rem;
+  background: rgb(255, 255, 255);
+  border: 1px solid #eee;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  color: #000;
+}
+
+.menu button {
+  display: block;
+  width: 100%;
+  padding: 1.5rem 2rem;
+  border: none;
+  border-radius: 20px;
+  background: none;
+  cursor: pointer;
+  color: #000;
+}
+
+.menu button:hover {
+  background: #f0f0f0;
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+  .header {
+    gap: 2rem;
+    flex-direction: column;
+    padding: 1rem 0.5rem;
+  }
+
+  .searchBar input {
+    width: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .searchBar input {
+    width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .searchBar input {
+    width: 240px;
+    font-size: 0.9rem;
+  }
+
+  .logoText,
+  .logoTextLetra {
+    font-size: 1.2rem;
+  }
+
+  .logo {
+    height: 30px;
+  }
+
+  .menu {
+    flex-direction: column;
+    gap: 0;
+    width: 200px;
+  }
+
+  .menu button {
+    padding: 1rem;
+  }
+}
