@@ -105,7 +105,8 @@ export default function Card({
       <div className={styles.hourlyChart}>
         {hourly.map((h) => (
           <div key={h.hour} className={styles.hourBlock}>
-            <span className={styles.hourTemp}>{h.temp}°C</span>            <Image
+            <span className={styles.hourTemp}>{h.temp}°C</span>{" "}
+            <Image
               src={h.icon}
               alt={`Clima às ${h.hour}`}
               className={styles.hourIcon}

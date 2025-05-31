@@ -1,4 +1,8 @@
-import { NewsApiResponse, GuardianResponse, NewsArticle } from "../types/newsAPI";
+import {
+  NewsApiResponse,
+  GuardianResponse,
+  NewsArticle,
+} from "../types/newsAPI";
 
 // API Key do The Guardian (gratuita)
 const GUARDIAN_API_KEY = "aa3cd418-b61c-4b5d-9d96-979413d356c6";

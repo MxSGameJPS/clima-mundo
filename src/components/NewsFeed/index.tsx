@@ -30,13 +30,14 @@ export default function NewsFeed() {
   useEffect(() => {
     const getNews = async () => {
       setLoading(true);
-      setError("");      try {
+      setError("");
+      try {
         const data = await fetchNews(category);
 
         if (!data || !data.articles || data.articles.length === 0) {
           throw new Error("Nenhuma notícia encontrada");
-        } 
-        
+        }
+
         // Garantimos que todos os artigos tenham pelo menos uma URL e título
         const validArticles = data.articles.filter(
           (article) => article.url && article.title
